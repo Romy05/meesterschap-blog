@@ -1,0 +1,165 @@
+@import url(./fonts.css);
+
+/* MARK: BASIC RESET STYLING & VARIABLES */
+    :root {
+        --beige: #E3DBC3;
+        --beige-dark: #7E7935;
+        --green-dark: #8BB174;
+        --green-light: #B5CA8D;
+        --purple-light: #CAADED;
+        --purple-dark: #A266C7;
+        --purple-really-dark: #330152;
+        --hot-pink: #FE3C8A;
+
+        --background-color: var(--beige);
+    }
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: var(--background-color);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+/*  MARK: NAV STYLING */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: solid .25rem var(--beige-dark);
+
+    .nav-logo {
+        font-size: 3em;
+        text-wrap: nowrap;
+        font-family: 'defonte', sans-serif;
+        color: var(--hot-pink);
+        text-decoration: none;
+    }
+
+    svg {
+        height: 3rem;
+        width: auto;
+    }
+
+    .glasses {
+        vertical-align: text-top;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    a.nav-item, button {
+        font-family: "league-spartan", sans-serif;
+        font-size: 1.1rem;
+        display: inline-block;
+        padding: .5rem;
+        border: 1px solid rgb(0 0 0 / 0.3);
+        width: 100%;
+        color: var(--purple-really-dark);
+        text-decoration: none;
+        background: linear-gradient(in oklch to left, var(--hot-pink) 50%, var(--green-light) 0 100%);
+        background-size: 200% 100%;
+        background-position: 100% 0%;
+
+        transition: background-position 0.5s ease;
+        
+
+        &:hover, &:focus {
+            background-position: 0% 0%; 
+        }
+    }
+
+    > ul {
+        display: flex;
+        padding: 0;
+        gap: .5rem;
+    }
+
+    .subject {
+        position: relative;
+
+        button {
+            padding-inline: 2rem;
+            cursor: pointer;
+            border-radius: .25rem;
+            border: 1px solid var(--beige-dark);
+        }
+
+        &:has([popover]:popover-open) {
+            button {
+                background-position: 0% 0%; 
+                font-weight: bold;
+            }
+        }
+    }
+
+    button[popovertarget="weekly-nerds-popover"] {
+        anchor-name: --anchor-weekly-nerds;
+    }
+    #weekly-nerds-popover {
+        position-anchor: --anchor-weekly-nerds;
+    }
+
+    button[popovertarget="subjects-popover"] {
+        anchor-name: --anchor-subjects;
+    }
+    #subjects-popover {
+        position-anchor: --anchor-subjects;
+    }
+
+    button[popovertarget="meesterschap-popover"] {
+        anchor-name: --anchor-meesterschap;
+    }
+    #meesterschap-popover {
+        position-anchor: --anchor-meesterschap;
+    }
+
+    [popover] {
+        top: .5rem;
+        left: .5rem;
+        border: none;
+        list-style: none;
+        position-area: bottom span-all;
+        min-width: anchor-size(width);
+    }
+}
+
+/* MARK: TYPOGRAPHY */
+
+.large-header {
+    margin-block: .5em;
+    font-size: 3em;
+    font-family: "wizards-magic" , "Brush Script MT", cursive;
+    width: 100%;
+    text-align: center;
+    color: transparent;
+    background-clip: text;
+    background-image: url(../public/images/sparkle.gif);
+
+    &::before, &::after {
+        content: 'm';
+        font-size: 4rem;
+        font-family: "heart";
+    }
+
+    &::before {
+        content: 'i'
+    }
+}
+
+.heart {
+    font-family: "heart";
+}
+
+.emoji {
+    font-family: "emoji";
+}

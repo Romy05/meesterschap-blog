@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'defonte';
+    src: url("../public/fonts/defonte/TrueType/DeFonte\ reduced\ Normale.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'wizards-magic';
+    src: url("../public/fonts/Wizards\'\ Magic.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'league-spartan';
+    src: url("../public/fonts/league-spartan/LeagueSpartan-VariableFont_wght.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'heart';
+    src: url("../public/fonts/BonusHearts.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'emoji';
+    src: url("../public/fonts/EmojiFont.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+

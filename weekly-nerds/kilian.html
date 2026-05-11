@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Romy's blog</title>
+    <script type="module" defer src="../index.js"></script>
+</head>
+<body>
+<nav>
+        <a href="/" aria-label="Homepagina" class="nav-logo">
+            R<svg class="glasses" viewBox="-1 -1 37 18" width="38" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="27" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
+                <circle cx="8" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
+                <path d="M15.5 7.5H19.5" stroke="#7E7935"/>
+
+                <!-- iris links -->
+                <circle class="iris" data-base-cx="8" data-base-cy="8" cx="8" cy="8" r="3" fill="#718AF6"/>
+                <circle class="iris" data-base-cx="8" data-base-cy="8" cx="8" cy="8" r="1.5" fill="black"/>
+
+                <!-- iris rechts -->
+                <circle class="iris" data-base-cx="27" data-base-cy="8" cx="27" cy="8" r="3" fill="#718AF6"/>
+                <circle class="iris" data-base-cx="27" data-base-cy="8" cx="27" cy="8" r="1.5" fill="black"/>
+            </svg>m's Blog
+        </a>
+        <ul>
+            <li class="subject">
+                <button lang="en" popovertarget="weekly-nerds-popover">Weekly Nerds</button>
+                <ul popover id="weekly-nerds-popover">
+                    <li><a class="nav-item" href="/weekly-nerds">Alle <span lang="en">Weekly Nerds</span></a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/johann">Johann</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/kilian">Kilian</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/nils">Nils</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/ppk">Peter Paul Koch</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/rosa">Rosa</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/sanne">Sanne</a></li>
+                    <li><a class="nav-item" href="/weekly-nerds/yolijn-robbert">Yolijn &amp; Robbert</a></li>
+                </ul>
+            </li>
+            <li class="subject">
+                <button popovertarget="subjects-popover">Vakken</button>
+                <ul popover id="subjects-popover">
+                    <li><a class="nav-item" href="/vakken">Alle Vakken</a></li>
+                    <li><a class="nav-item" href="/vakken/bt">Browser Tech</a></li>
+                    <li><a class="nav-item" href="/vakken/css">CSS To The Rescue</a></li>
+                    <li><a class="nav-item" href="/vakken/hcd">Human Centered Design</a></li>
+                    <li><a class="nav-item" href="/vakken/api">API</a></li>
+                </ul>
+            </li>
+            <li class="subject">
+                <button popovertarget="meesterschap-popover">Meesterschap</button>
+                <ul popover id="meesterschap-popover">
+                    <li><a class="nav-item" href="/meesterschap">Meesterschap</a></li>
+                    <li><a class="nav-item" href="/meesterschap/sprint-0">Sprint 0</a></li>
+                    <li><a class="nav-item" href="/meesterschap/hackathon">Hackathon</a></li>
+                    <li><a class="nav-item" href="/meesterschap/meesterproef">Meesterproef</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <h1 class="large-header">
+        Weekly Nerd: Kilian
+    </h1>
+    <article>
+        <p>
+            Kilian was de eerste Weekly Nerd spreker en kwam op 4 februari ons niet alleen vertellen over html elementen en -attributen, maar ook over CSS trucjes om elementen te stylen.
+        </p>
+        <p>Ik vond het interessant om te zien dat je input elementen helemaal zelf kon stylen hoe je wilden met bepaalde trucjes. Ik dacht hiervoor dat het juist erg lastig zou zijn om de standaard browser lay-out weg te krijgen, maar dit bleek achteraf super erg mee te vallen!</p>
+        
+        <p>Ook heb ik geleerd dat je er bijvoorbeeld voor kan zorgen dat alle browser styling weggaat van een input element met "appearance: none;". Dit is super handig om te gebruiken zodra je een input gaat stylen.</p>
+        
+        <p>Ook liet hij een paar andere trucjes zien:
+            <ul>
+                <li>Met scroll-behavior: smooth; op het html-element kun je de pagina vloeiend laten scrollen naar links.</li>
+                <li>Met scroll-margin-top kun je voorkomen dat een element achter een sticky of fixed header verdwijnt wanneer je naar een ankerlink scrollt.</li>
+                <li>De :target pseudo-class kun je gebruiken om een element te stylen nadat ernaartoe is genavigeerd. Hiermee kun je bijvoorbeeld een highlight- of fade-in-animatie uitvoeren op het doel-element.</li>
+                <li>Met @starting-style in CSS kun je animaties toevoegen aan een "&lt;dialog&gt;" wanneer deze geopend wordt.</li>
+            </ul>
+        </p>
+        <p>Dit zijn dingen die ik wel echt kan gebruiken in mijn websites, dus ik vond dit echt een interessante spreker!</p>
+    </article>
+</body>
+</html>

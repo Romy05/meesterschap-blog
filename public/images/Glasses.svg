@@ -1,0 +1,13 @@
+<svg class="glasses" viewBox="-1 -1 37 18" width="38" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="27" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
+    <circle cx="8" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
+    <path d="M15.5 7.5H19.5" stroke="#7E7935"/>
+
+    <!-- iris links -->
+    <circle class="iris" data-base-cx="8" data-base-cy="8" cx="8" cy="8" r="3" fill="#718AF6"/>
+    <circle class="iris" data-base-cx="8" data-base-cy="8" cx="8" cy="8" r="1.5" fill="black"/>
+
+    <!-- iris rechts -->
+    <circle class="iris" data-base-cx="30" data-base-cy="8" cx="30" cy="8" r="3" fill="#718AF6"/>
+    <circle class="iris" data-base-cx="30" data-base-cy="8" cx="30" cy="8" r="1.5" fill="black"/>
+</svg>

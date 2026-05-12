@@ -40,8 +40,10 @@ nav {
         font-size: 3em;
         text-wrap: nowrap;
         font-family: 'defonte', sans-serif;
-        color: var(--hot-pink);
         text-decoration: none;
+        color: transparent;
+        background-clip: text;
+        background-image: url(../public/images/sparkle.gif);
     }
 
     svg {
@@ -64,9 +66,9 @@ nav {
         padding: .5rem;
         border: 1px solid rgb(0 0 0 / 0.3);
         width: 100%;
-        color: var(--purple-really-dark);
+        color: var(--beige);
         text-decoration: none;
-        background: linear-gradient(in oklch to left, var(--hot-pink) 50%, var(--green-light) 0 100%);
+        background: linear-gradient(in oklch to left, var(--hot-pink) 50%, var(--purple-really-dark) 0 100%);
         background-size: 200% 100%;
         background-position: 100% 0%;
 
@@ -135,24 +137,52 @@ nav {
 
 /* MARK: TYPOGRAPHY */
 
+p {
+    color: var(--purple-really-dark);
+}
+
 .large-header {
     margin-block: .5em;
     font-size: 3em;
     font-family: "wizards-magic" , "Brush Script MT", cursive;
     width: 100%;
     text-align: center;
-    color: transparent;
-    background-clip: text;
-    background-image: url(../public/images/sparkle.gif);
+    color: var(--beige-dark);
 
     &::before, &::after {
-        content: 'm';
+        content: 's';
         font-size: 4rem;
         font-family: "heart";
+        color: transparent;
+        background-clip: text;
+        background-image: url(../public/images/sparkle.gif);
     }
 
     &::before {
-        content: 'i'
+        content: 'j';
+    }
+}
+
+.medium-header {
+    margin-block: .5em;
+    font-size: 2em;
+    font-family: "wizards-magic" , "Brush Script MT", cursive;
+    width: 100%;
+    text-align: center;
+    color: var(--hot-pink);
+
+    &::before,  &::after {
+        content: 'u';
+        font-size: 4rem;
+        font-family: "heart";
+        color: transparent;
+        background-clip: text;
+        background-image: url(../public/images/sparkle.gif);
+    }
+
+    &::after {
+        display: inline-block;
+        transform: rotateY(180deg);
     }
 }
 

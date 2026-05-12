@@ -8,6 +8,6 @@
     <circle class="iris" data-base-cx="8" data-base-cy="8" cx="8" cy="8" r="1.5" fill="black"/>
 
     <!-- iris rechts -->
-    <circle class="iris" data-base-cx="30" data-base-cy="8" cx="30" cy="8" r="3" fill="#718AF6"/>
-    <circle class="iris" data-base-cx="30" data-base-cy="8" cx="30" cy="8" r="1.5" fill="black"/>
+    <circle class="iris" data-base-cx="27" data-base-cy="8" cx="27" cy="8" r="3" fill="#718AF6"/>
+    <circle class="iris" data-base-cx="27" data-base-cy="8" cx="27" cy="8" r="1.5" fill="black"/>
 </svg>

@@ -157,6 +157,7 @@ p {
 img, video {
     width: 60dvw;
     max-height: 40dvh;
+    object-fit: cover;
 }
 
 .large-header {

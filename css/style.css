@@ -137,8 +137,26 @@ nav {
 
 /* MARK: TYPOGRAPHY */
 
-p {
+p, li {
     color: var(--purple-really-dark);
+}
+
+article {
+    margin-inline: 10dvw;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+p {
+    display: flex;
+    text-align: center;
+    margin: auto;
+}
+
+img, video {
+    width: 60dvw;
+    max-height: 40dvh;
 }
 
 .large-header {
@@ -185,6 +203,30 @@ p {
         display: inline-block;
         transform: rotateY(180deg);
     }
+}
+
+.small-header {
+    margin-block-start: .5em;
+    font-size: 1em;
+    font-family: 'defonte', sans-serif;
+    font-weight:600;
+    width: 100%;
+    text-align: center;
+    color: var(--beige-dark);
+
+    /* &::before,  &::after {
+        content: 'u';
+        font-size: 4rem;
+        font-family: "heart";
+        color: transparent;
+        background-clip: text;
+        background-image: url(../public/images/sparkle.gif);
+    }
+
+    &::after {
+        display: inline-block;
+        transform: rotateY(180deg);
+    } */
 }
 
 .heart {

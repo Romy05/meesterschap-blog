@@ -1,4 +1,4 @@
-@import url(./fonts.css);
+@import url(fonts.css);
 
 /* MARK: BASIC RESET STYLING & VARIABLES */
     :root {
@@ -43,7 +43,7 @@ nav {
         text-decoration: none;
         color: transparent;
         background-clip: text;
-        background-image: url(../public/images/sparkle.gif);
+        background-image: url(../../public/images/sparkle.gif);
     }
 
     svg {
@@ -202,7 +202,7 @@ img, video {
         font-family: "heart";
         color: transparent;
         background-clip: text;
-        background-image: url(../public/images/sparkle.gif);
+        background-image: url(../../public/images/sparkle.gif);
     }
 
     &::before {
@@ -225,7 +225,7 @@ img, video {
         font-family: "heart";
         color: transparent;
         background-clip: text;
-        background-image: url(../public/images/sparkle.gif);
+        background-image: url(../../public/images/sparkle.gif);
     }
 
     &::after {

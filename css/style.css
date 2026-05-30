@@ -62,7 +62,9 @@ nav {
     a.nav-item, button {
         font-family: "league-spartan", sans-serif;
         font-size: 1.1rem;
-        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: .5rem;
         border: 1px solid rgb(0 0 0 / 0.3);
         width: 100%;
@@ -73,10 +75,31 @@ nav {
         background-position: 100% 0%;
 
         transition: background-position 0.5s ease;
-        
 
         &:hover, &:focus {
             background-position: 0% 0%; 
+        }
+
+        &::after {
+            display: inline-block;
+            content: '\2665'
+        }
+    }
+
+    a::after {
+        transform: rotateZ(-90deg);
+    }
+
+    button {
+        gap: .25rem;
+
+        &::after {
+            transform: rotateZ(-180deg);
+            transition: transform .5s ease;
+        }
+
+        &:focus::after {
+            transform: rotateZ(0deg);
         }
     }
 
@@ -142,10 +165,15 @@ p, li {
 }
 
 article {
-    margin-inline: 10dvw;
     display: flex;
     flex-direction: column;
     gap: .5rem;
+
+    margin-inline: 0;
+    
+    @media (width > 500px) {
+        margin-inline: clamp(2.5em, 5dvw, 30em);
+    }
 }
 
 p {

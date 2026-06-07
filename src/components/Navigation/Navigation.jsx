@@ -1,14 +1,53 @@
-import { initGlassesAnimation } from "../../helpers/animation.js";
-
-initGlassesAnimation();
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import posts from '../../data/posts.json';
 
 export const Navigation = () => {
+    const glassesRef = useRef(null);
+
+    useEffect(() => {
+        const glasses = glassesRef.current
+
+        if (!glasses) {
+            return;
+        }
+        // Met behulp van AI deze berekening https://claude.ai/share/7148c9c3-8018-41d7-9359-f225d6223186
+        const irises = glasses.querySelectorAll('.iris');
+
+        const handleMouseMove = (e) => {
+            const rect = glasses.getBoundingClientRect();
+
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const dx = e.clientX - centerX;
+            const dy = e.clientY - centerY;
+
+            const max = 2;
+            const angle = Math.atan2(dy, dx);
+            const x = Math.cos(angle) * max;
+            const y = Math.sin(angle) * max;
+
+            irises.forEach(iris => {
+                iris.setAttribute('cx', parseFloat(iris.dataset.baseCx) + x);
+                iris.setAttribute('cy', parseFloat(iris.dataset.baseCy) + y);
+            });
+        };
+
+        document.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [glassesRef])
+
+    const weeklyNerds = posts.filter(p => p.category === 'weekly-nerds');
 
     return (
         <nav>
-            <a href="#" aria-label="Homepagina" className="nav-logo">
+            <Link to="/" aria-label="Homepagina" className="nav-logo">
                 R
-                <svg className="glasses" viewBox="-1 -1 37 18" width="38" height="16" fill="none"
+                <svg ref={glassesRef} className="glasses" viewBox="-1 -1 37 18" width="38" height="16" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
                     <circle cx="27" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
                     <circle cx="8" cy="8" r="7.75" fill="white" stroke="#7E7935" stroke-width="0.5"/>
@@ -21,21 +60,21 @@ export const Navigation = () => {
                     <circle className="iris" data-base-cx="27" data-base-cy="8" cx="27" cy="8" r="1.5" fill="black"/>
                 </svg>
                 m's Blog
-            </a>
+            </Link>
             <ul>
                 <li className="subject">
                     <button lang="en" popoverTarget="weekly-nerds-popover">Weekly Nerds</button>
                     <ul popover="" id="weekly-nerds-popover">
-                        <li><a className="nav-item" href="weekly-nerds/index.html">Alle <span lang="en">Weekly Nerds</span></a>
+                        <li>
+                            <Link className="nav-item" to="/weekly-nerds">Alle Weekly Nerds</Link>
                         </li>
-                        <li><a className="nav-item" href="weekly-nerds/johann.html">Johann</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/kilian.html">Kilian</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/nils.html">Nils</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/ppk.html">Peter Paul Koch</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/rosa.html">Rosa</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/sanne.html">Sanne</a></li>
-                        <li><a className="nav-item" href="weekly-nerds/yolijn-robbert.html">Yolijn &amp; Robbert</a></li>
-                        <li><a className="nav-item" href="../weekly-nerds/marleen.html">Marleen</a></li>
+                        {weeklyNerds.map(post => (
+                            <li key={post.slug}>
+                                <Link className="nav-item" to={`/weekly-nerds/${post.slug}`}>
+                                    {post.title.replace('Weekly Nerd: ', '').replace('Weekly Nerds: ', '')}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </li>
                 <li className="subject">

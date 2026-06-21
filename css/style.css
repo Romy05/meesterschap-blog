@@ -1,33 +1,33 @@
 @import url(./fonts.css);
 
 /* MARK: BASIC RESET STYLING & VARIABLES */
-    :root {
-        --beige: #E3DBC3;
-        --beige-dark: #7E7935;
-        --green-dark: #8BB174;
-        --green-light: #B5CA8D;
-        --purple-light: #CAADED;
-        --purple-dark: #A266C7;
-        --purple-really-dark: #330152;
-        --hot-pink: #FE3C8A;
+:root {
+    --beige: #E3DBC3;
+    --beige-dark: #7E7935;
+    --green-dark: #8BB174;
+    --green-light: #B5CA8D;
+    --purple-light: #CAADED;
+    --purple-dark: #A266C7;
+    --purple-really-dark: #330152;
+    --hot-pink: #FE3C8A;
 
-        --background-color: var(--beige);
-    }
+    --background-color: var(--beige);
+}
 
-    * {
-        margin: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        background: var(--background-color);
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+body {
+    background: var(--background-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-/*  MARK: NAV STYLING */
+/* MARK: NAV STYLING */
 
 nav {
     display: flex;
@@ -77,7 +77,7 @@ nav {
         transition: background-position 0.5s ease;
 
         &:hover, &:focus {
-            background-position: 0% 0%; 
+            background-position: 0% 0%;
         }
 
         &::after {
@@ -97,10 +97,6 @@ nav {
             transform: rotateZ(-180deg);
             transition: transform .5s ease;
         }
-
-        &:focus::after {
-            transform: rotateZ(0deg);
-        }
     }
 
     > ul {
@@ -119,10 +115,12 @@ nav {
             border: 1px solid var(--beige-dark);
         }
 
-        &:has([popover]:popover-open) {
-            button {
-                background-position: 0% 0%; 
-                font-weight: bold;
+        &:has([popover]:popover-open) button {
+            background-position: 0% 0%;
+            font-weight: bold;
+
+            &::after {
+                transform: rotateZ(0deg);
             }
         }
     }
@@ -158,6 +156,76 @@ nav {
     }
 }
 
+/* MARK: HAMBURGER */
+
+.nav-toggle-input {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: .35rem;
+    cursor: pointer;
+    padding: .5rem;
+
+    span {
+        display: block;
+        width: 1.75rem;
+        height: .2rem;
+        background: var(--purple-really-dark);
+        border-radius: 2px;
+        transition: transform .4s ease, opacity .3s ease;
+    }
+}
+
+@media (width <= 900px) {
+    nav {
+        flex-wrap: wrap;
+
+        .hamburger {
+            display: flex;
+        }
+
+        > ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            padding-block: .5rem;
+            gap: 0;
+        }
+
+        .subject {
+            width: 100%;
+
+            button {
+                width: 100%;
+                padding-inline: 1rem;
+                border-radius: 0;
+            }
+        }
+
+        .nav-toggle-input:checked ~ ul {
+            display: flex;
+        }
+
+        .nav-toggle-input:checked ~ .hamburger {
+            span:nth-child(1) {
+                transform: translateY(.55rem) rotate(45deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                transform: translateY(-.55rem) rotate(-45deg);
+            }
+        }
+    }
+}
+
 /* MARK: TYPOGRAPHY */
 
 p, li {
@@ -167,17 +235,16 @@ p, li {
 article {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 1rem;
 
     margin-inline: 0;
-    
+
     @media (width > 500px) {
         margin-inline: clamp(2.5em, 5dvw, 30em);
     }
 }
 
 p {
-    display: flex;
     text-align: center;
     margin: auto;
 }
@@ -214,12 +281,12 @@ img, video {
     margin-block: .25em;
     font-size: 1.5em;
     font-family: 'defonte', sans-serif;
-    font-weight:300;
+    font-weight: 300;
     width: 100%;
     text-align: center;
     color: var(--hot-pink);
 
-    &::before,  &::after {
+    &::before, &::after {
         content: 'u';
         font-size: 4rem;
         font-family: "heart";
@@ -238,24 +305,10 @@ img, video {
     margin-block-start: .5em;
     font-size: 1em;
     font-family: 'defonte', sans-serif;
-    font-weight:600;
+    font-weight: 600;
     width: 100%;
     text-align: center;
     color: var(--beige-dark);
-
-    /* &::before,  &::after {
-        content: 'u';
-        font-size: 4rem;
-        font-family: "heart";
-        color: transparent;
-        background-clip: text;
-        background-image: url(../public/images/sparkle.gif);
-    }
-
-    &::after {
-        display: inline-block;
-        transform: rotateY(180deg);
-    } */
 }
 
 .heart {

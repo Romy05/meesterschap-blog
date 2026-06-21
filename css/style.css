@@ -2,6 +2,8 @@
 
 /* MARK: BASIC RESET STYLING & VARIABLES */
 :root {
+    color-scheme: light dark;
+
     --beige: #E3DBC3;
     --beige-dark: #7E7935;
     --green-dark: #8BB174;
@@ -11,7 +13,9 @@
     --purple-really-dark: #330152;
     --hot-pink: #FE3C8A;
 
-    --background-color: var(--beige);
+    --background-color: light-dark(var(--beige), var(--purple-really-dark));
+    --secondary-color: light-dark(var(--beige-dark), var(--hot-pink));
+    --text-color: light-dark(var(--beige-dark), var(--beige));
 }
 
 * {
@@ -34,7 +38,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 
-    border-bottom: solid .25rem var(--beige-dark);
+    border-bottom: solid .25rem var(--secondary-color);
 
     .nav-logo {
         font-size: 3em;
@@ -55,6 +59,26 @@ nav {
         vertical-align: text-top;
     }
 
+    .eye {
+        color: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .eye {
+            color: var(--beige);
+        }
+
+        .closed-eye {
+            color: var(--beige-dark);
+        }
+
+        .iris {
+            display: none;
+        }
+    }
+
+    
+
     li {
         list-style-type: none;
     }
@@ -68,13 +92,15 @@ nav {
         padding: .5rem;
         border: 1px solid rgb(0 0 0 / 0.3);
         width: 100%;
-        color: var(--beige);
+        color: var(--background-color);
         text-decoration: none;
-        background: linear-gradient(in oklch to left, var(--hot-pink) 50%, var(--purple-really-dark) 0 100%);
+        background: linear-gradient(in oklch to left, var(--hot-pink) 50%, light-dark(var(--purple-really-dark), var(--beige)) 0 100%);
         background-size: 200% 100%;
         background-position: 100% 0%;
 
-        transition: background-position 0.5s ease;
+        @media (prefers-reduced-motion:no-preference) {
+            transition: background-position 0.5s ease;
+        }
 
         &:hover, &:focus {
             background-position: 0% 0%;
@@ -95,7 +121,9 @@ nav {
 
         &::after {
             transform: rotateZ(-180deg);
-            transition: transform .5s ease;
+            @media (prefers-reduced-motion:no-preference) {
+                transition: transform .5s ease;
+            }
         }
     }
 
@@ -112,7 +140,7 @@ nav {
             padding-inline: 2rem;
             cursor: pointer;
             border-radius: .25rem;
-            border: 1px solid var(--beige-dark);
+            border: 1px solid light-dark(var(--beige-dark), var(--purple-really-dark));
         }
 
         &:has([popover]:popover-open) button {
@@ -147,12 +175,25 @@ nav {
     }
 
     [popover] {
+        z-index: 10;
+        background-color: var(--purple-really-dark);
         top: .5rem;
         left: .5rem;
         border: none;
         list-style: none;
         position-area: bottom span-all;
         min-width: anchor-size(width);
+        transform: scaleY(1);
+        transform-origin: top;
+        
+        @media (prefers-reduced-motion: no-preference) {
+            transition: transform .5s ease-out, 
+            display .5s allow-discrete;
+        }
+
+        &:not(:popover-open) {
+            transform: scaleY(0);
+        }
     }
 }
 
@@ -174,9 +215,12 @@ nav {
         display: block;
         width: 1.75rem;
         height: .2rem;
-        background: var(--purple-really-dark);
+        background: light-dark(var(--purple-really-dark), var(--beige));
         border-radius: 2px;
-        transition: transform .4s ease, opacity .3s ease;
+
+        @media (prefers-reduced-motion:no-preference) {
+            transition: transform .4s ease, opacity .3s ease;
+        }
     }
 }
 
@@ -229,7 +273,7 @@ nav {
 /* MARK: TYPOGRAPHY */
 
 p, li {
-    color: var(--purple-really-dark);
+    color: var(--text-color);
 }
 
 article {
@@ -261,7 +305,7 @@ img, video {
     font-family: "wizards-magic" , "Brush Script MT", cursive;
     width: 100%;
     text-align: center;
-    color: var(--beige-dark);
+    color: var(--secondary-color);
 
     &::before, &::after {
         content: 's';
@@ -284,7 +328,7 @@ img, video {
     font-weight: 300;
     width: 100%;
     text-align: center;
-    color: var(--hot-pink);
+    color: light-dark(var(--hot-pink), var(--purple-light));
 
     &::before, &::after {
         content: 'u';
@@ -308,7 +352,7 @@ img, video {
     font-weight: 600;
     width: 100%;
     text-align: center;
-    color: var(--beige-dark);
+    color: var(--secondary-color);
 }
 
 .heart {
@@ -317,4 +361,13 @@ img, video {
 
 .emoji {
     font-family: "emoji";
+}
+
+
+/* MARK: STARTING STYLES */
+
+@starting-style {
+    [popover]:popover-open {
+        transform: scaleY(0);
+    } 
 }

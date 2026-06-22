@@ -16,7 +16,7 @@
     --background-color: light-dark(var(--beige), var(--purple-really-dark));
     --secondary-color: light-dark(var(--beige-dark), var(--hot-pink));
     --text-color: light-dark(var(--purple-really-dark), var(--beige));
-
+    --highlight-color: light-dark(var(--hot-pink), var(--purple-light));
 
     @media (prefers-reduced-motion:no-preference) {
         scroll-behavior: smooth;
@@ -40,6 +40,9 @@ body {
 /* MARK: NAV STYLING */
 
 nav {
+    top: 0;
+    position: sticky;
+    background-color: var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -282,6 +285,25 @@ p, li {
     font-size: 1.1em;
 }
 
+dt, strong {
+    color: var(--highlight-color);
+    font-weight: 700;
+}
+
+li a {
+    color: transparent;
+    background-clip: text;
+    background-image: url(../public/images/sparkle.gif);
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    padding: 0;
+}
+
 article {
     display: flex;
     flex-direction: column;
@@ -310,6 +332,10 @@ img, video {
     width: 100%;
     text-align: center;
     color: var(--secondary-color);
+
+    span {
+        font-family: "wizards-magic" , "Brush Script MT", cursive;
+    }
 
     &::before, &::after {
         content: 's';
@@ -366,6 +392,89 @@ img, video {
     font-family: "emoji";
 }
 
+/* MARK: PROFILE */
+
+.profile-header {
+   text-align: start;
+   align-self: start;
+}
+
+.profile-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.profile {
+    background: light-dark(#fff5, #0005);
+    padding: 1rem;
+    outline: var(--highlight-color) 2px solid;
+    min-width: 100%;
+
+    @media (min-width: 700px) {
+        &:first-child {
+            flex: 0 0 clamp(40%, 40%, 60%);
+            min-width: 0;
+        }
+
+        &:last-child {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+    }
+   
+
+    .medium-header {
+        &::after, &::before {
+            content: none;
+        }
+    }
+
+    img {
+        aspect-ratio: 1/2;
+        width: 125px;
+        border: 7.5px dotted var(--secondary-color);
+    }
+
+    dl {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .group {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: .25rem;
+
+        dt {
+            &::after {
+                content: ':'
+            }
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.links-section {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+    }
+}
 
 /* MARK: STARTING STYLES */
 
@@ -374,3 +483,4 @@ img, video {
         transform: scaleY(0);
     } 
 }
+
